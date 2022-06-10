@@ -5,12 +5,11 @@ import repositories.human_repository as human_repository
 from models.zombie import Zombie
 import repositories.zombie_repository as zombie_repository
 
-
 def save(biting):
     sql = "INSERT INTO bitings (human_id, zombie_id) VALUES (%s, %s) RETURNING id"
     values = [biting.human.id, biting.zombie.id]
     results = run_sql(sql, values)
-    id = results[0]["id"]
+    id = results[0]['id']
     biting.id = id
 
 

@@ -13,6 +13,14 @@ def zombies():
     return render_template("zombies/index.html", zombies=zombies)
 
 
+# SHOW
+@zombies_blueprint.route("/zombies/<id>")
+def show_zombie(id):
+    victims = zombie_repository.select_victims_of_zombie(id)
+    zombie = zombie_repository.select(id)
+    return render_template("zombies/show.html", victims=victims, zombie=zombie)
+
+
 # NEW
 @zombies_blueprint.route("/zombies/new")
 def new_zombie():
@@ -55,10 +63,3 @@ def update_zombie(id):
 def delete_zombie(id):
     zombie_repository.delete(id)
     return redirect("/zombies")
-
-#SHOW -> to be fixed!!!
-@zombies_blueprint.route("/zombies/<id>")
-def show(id):
-    zombie = zombie_repository.select(id)
-    human = zombie_repository.infected_humans(zombie)
-    return render_template("zombies/show.html", zombie=zombie, human=human)

@@ -1,17 +1,9 @@
-{% extends 'base.html' %}
+<h2>{{ zombie.name }}</h2>
+<p>Type: {{ zombie.zombie_type.name }}</p>
 
-{% block content %}
-
-<h1>{{zombie.name}}</h1>
-
-<h2>{{ zombie.zombie_type.name }}</h2>
-
-<h3>Humans Bitten:</h3>
-
+<h3>Victims</h3>
 <ul>
-    {% for human in humans %}
-    <li>{{human.name}}</li>
+    {% for victim in victims %}
+    <li>{{ victim.name }}</li>
     {% endfor %}
 </ul>
-
-{% endblock content %}

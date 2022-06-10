@@ -12,11 +12,9 @@ app.register_blueprint(humans_blueprint)
 app.register_blueprint(zombies_blueprint)
 app.register_blueprint(zombie_types_blueprint)
 
-
 @app.route("/")
 def main():
-    return render_template("index.html")
+    return render_template('index.html')
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()
